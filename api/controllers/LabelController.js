@@ -1,9 +1,11 @@
-const {label} = require ("../models");
+const {label, transaction} = require ("../models");
 
-class IncomeController {
+class LabelController {
   static async getLabels(req, res) {
    try{
-    const labels = await label.findAll();
+    const labels = await label.findAll({
+      order: [["id", "ASC"]],
+    });
     res.json(labels);
    }catch (err){
     res.json(err);
@@ -13,10 +15,9 @@ class IncomeController {
   static async add(req, res) {
     // untuk menambahkan data
     try {
-      const {information, moneyIn } = req.body;
+      const {type, color } = req.body;
       const result = await label.create({
-        information,
-        moneyIn,
+        type, color,
       });
 
       res.json(result);
@@ -47,12 +48,11 @@ class IncomeController {
     // untuk mengubah data
     try {
       const id = +req.params.id;
-      const { information, moneyIn } = req.body;
+      const { type, color } = req.body;
 
       const result = await label.update(
         {
-          information,
-          moneyIn,
+          type, color,
         },
         {
           where: { id },
@@ -65,25 +65,52 @@ class IncomeController {
     }
   }
 
-  // static async detail(req, res) {
-  //   // untuk mengambil detail dari id data
-  //   try {
-  //     const id = +req.params.id;
-  //     const result = await label.findByPk(id);
+  static async detail(req, res) {
+    // untuk mengambil detail dari id data
+    try {
+      const id = +req.params.id;
+      const result = await label.findByPk(id);
 
-  //     if (result) {
-  //       res.json(result);
-  //     } else {
-  //       res.json({
-  //         message: `Author id ${id} not found.`,
-  //       });
-  //     }
-  //   } catch (err) {
-  //     res.json(err);
-  //   }
-  // }
+      if (result) {
+        res.json(result);
+      } else {
+        res.json({
+          message: `Author id ${id} not found.`,
+        });
+      }
+    } catch (err) {
+      res.json(err);
+    }
+  }
+
+  static async listTransactions(req, res) {
+    // untuk mengambil buku dari id
+    try {
+      const labelId = +req.params.id;
+
+      const transactions = await transaction.findAll({
+        where: {
+          labelId,
+        },
+      });
+      if (transactions.length > 0) {
+        res.json({
+          data: {
+            transactions,
+            totalTransactions: transactions.length,
+          },
+        });
+      } else {
+        res.json({
+          message: "No Transaction yet.",
+        });
+      }
+    } catch (err) {
+      res.json(err);
+    }
+  }
 
   
 }
 
-module.exports = IncomeController;
+module.exports = LabelController;

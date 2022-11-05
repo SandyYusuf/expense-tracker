@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      label.hasMany(models.transaction)
     }
   }
   label.init({

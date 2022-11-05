@@ -5,7 +5,8 @@ transactionRoute.get("/", TransactionController.getTransactions);
 transactionRoute.post("/add", TransactionController.add);
 transactionRoute.delete("/remove/:id", TransactionController.remove);
 transactionRoute.put("/edit/:id", TransactionController.edit);
-// incomeRoute.get("/detail/:id", TransactionController.detail);
+transactionRoute.get("/detail/:id", TransactionController.detail);
+transactionRoute.get("/sum", TransactionController.getSum);
 
 
 module.exports = transactionRoute;
