@@ -1,8 +1,26 @@
-import React from "react";
-
+import React,{useState, useEffect} from "react";
+import axios from "axios"
 
 const Balance = () => {
-  
+  const [sums, setSums] = useState([])
+
+  const getSums = async () => {
+    try {
+      const sums = await axios({
+        method: "get",
+        url: "http://localhost:3000/transactions/sum",
+      });
+   
+      setSums(sums.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+
+  useEffect(() => {
+    getSums();
+  }, []);
 
   return (
     <div className="container">
@@ -17,7 +35,7 @@ const Balance = () => {
           </thead>
           <tbody>
             <td>
-              
+            Rp. {sums}
             </td>
           </tbody>
         </table>

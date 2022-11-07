@@ -47,7 +47,7 @@ const Transaction = () => {
                 <td>{date}</td>
                 <td>{detail}</td>
                 <td>{categories}</td>
-                <td>{amount}</td>
+                <td>Rp. {amount}</td>
               </tr>
             );
           })}

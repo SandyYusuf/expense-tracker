@@ -2,7 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 import "./App.css";
-// import Balance from "./components/Balance";
+import Balance from "./components/Balance";
 import Transaction from "./components/Transaction";
 import Form from "./components/Form";
 
@@ -15,7 +15,7 @@ function App() {
         <h4>Track Your Spendings and Savings Here</h4>
       </header>
 
-      {/* <Balance /> */}
+      <Balance />
 
       <div className="container">
         <div className="row">
