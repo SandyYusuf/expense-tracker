@@ -1,7 +1,26 @@
-import React from "react";
+import React, {useState} from "react";
+import axios from "axios"
 
 
 const Transaction = () => {
+  const [transactions, setTransactions] = useState([])
+
+  const getTransactions = async () => {
+    try {
+      const transactions = await axios({
+        method: "get",
+        url: "http://localhost:3000/transactions",
+      });
+   
+      console.log(transactions);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+
+  getTransactions()
+
     return (
     <>
       <div className="col-6 shadow p-3 mb-5 bg-body rounded">
