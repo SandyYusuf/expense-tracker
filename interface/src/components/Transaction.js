@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import axios from "axios"
 
 
@@ -12,14 +12,16 @@ const Transaction = () => {
         url: "http://localhost:3000/transactions",
       });
    
-      console.log(transactions);
+      setTransactions(transactions.data);
     } catch (err) {
       console.log(err);
     }
   };
 
 
-  getTransactions()
+  useEffect(() => {
+    getTransactions();
+  }, []);
 
     return (
     <>
@@ -29,15 +31,26 @@ const Transaction = () => {
             <table className="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <th>id</th>
+                  
                   <th>Date</th>
                   <th>Details</th>
                   <th>Categories</th>
-                  <th>Amounts</th>
+                  <th>Amounts</th> 
                 </tr>
               </thead>
               <tbody>
+              {transactions.map((transaction) => {
+            const { date, detail, categories, amount } = transaction;
+            return (
+              <tr>
                 
+                <td>{date}</td>
+                <td>{detail}</td>
+                <td>{categories}</td>
+                <td>{amount}</td>
+              </tr>
+            );
+          })}
               </tbody>
             </table>
           </div>
