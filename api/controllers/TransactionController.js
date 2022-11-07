@@ -1,10 +1,10 @@
-const {label, transaction} = require ("../models");
+const {transaction} = require ("../models");
 
 class TransactionController {
   static async getTransactions(req, res) {
    try{
     const transactions = await transaction.findAll({
-      include: [label],
+      order: [["id", "ASC"]],
     });
     res.json(transactions);
    }catch (err){
@@ -15,9 +15,9 @@ class TransactionController {
   static async add(req, res) {
     // untuk menambahkan data
     try {
-      const {date, detail, amount, labelId } = req.body;
+      const {date, detail, categories, amount } = req.body;
       const result = await transaction.create({
-        date, detail, amount, labelId,
+        date, detail, categories, amount,
       });
 
       res.json(result);
@@ -48,11 +48,11 @@ class TransactionController {
     // untuk mengubah data
     try {
       const id = +req.params.id;
-      const { date, detail, amount, labelId } = req.body;
+      const { date, detail, categories, amount } = req.body;
 
       const result = await transaction.update(
         {
-          date, detail, amount, labelId,
+          date, detail, categories, amount,
         },
         {
           where: { id },
@@ -85,7 +85,7 @@ class TransactionController {
 
   static async getSum(req,res){
       try{
-        const amount = Number(req.params.amount)
+        const Amounts = Number(req.params.amount)
   
         const transactions=await transaction.sum('amount')
         res.json(transactions)

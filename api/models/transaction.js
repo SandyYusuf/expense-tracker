@@ -11,35 +11,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      transaction.belongsTo(models.label)
     }
   }
   transaction.init({
-    date: {
-      type:DataTypes.STRING,
-      validate:{
-        notEmpty:{
-          message:"Date Cannot be Empty"
-        }
-      }
-    },
-    detail: {
-      type:DataTypes.STRING,
-      validate:{
-        notEmpty:{
-          message:"Input Your Transaction Detail"
-        }
-      }
-    },
-    amount: {
-      type:DataTypes.INTEGER,
-      validate:{
-        notEmpty:{
-          message:"Transaction Amount Cannot be Empty"
-        }
-      }
-    },
-    labelId: DataTypes.INTEGER
+    date: DataTypes.STRING,
+    detail: DataTypes.STRING,
+    categories: DataTypes.STRING,
+    amount: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'transaction',

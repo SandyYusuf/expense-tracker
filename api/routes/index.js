@@ -6,10 +6,8 @@ route.get ("/", (req,res) => {
     });
 });
 
-const labelRoutes = require ("./label");
-const transactionRoutes = require ("./transaction");
 
-route.use("/labels", labelRoutes);
+const transactionRoutes = require ("./transaction");
 route.use("/transactions", transactionRoutes);
 
 module.exports = route;

@@ -2,7 +2,7 @@
   "development": {
     "username": "postgres",
     "password": "sandy5011",
-    "database": "transaction tracker",
+    "database": "transaction DB",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
