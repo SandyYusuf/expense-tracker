@@ -1,57 +1,77 @@
-import React from "react";
+import React,{useState} from "react";
+
 
 const Form=()=> {
+  const [date, setDate] = useState("")
+  const [detail, setDetail] = useState("")
+  const [type, setType] = useState("")
+  const [amount, setAmount] = useState("")
+
+  const submitHandler= ()=>{
+    console.log("submit")
+    const tempObj={date, detail, type, amount}
+    console.log(tempObj)
+    
+  }
+
   return (
+    
     <div className="col-6 shadow p-3 mb-5 bg-body rounded">
       <div className="col-md-6 mx-auto">
       <div>
+        <div>
+          <h3> Add Transaction Form</h3>
+        </div>
       <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">
+        <label for="Date" class="form-label">
           Date
         </label>
         <input
-          type="email"
-          class="form-control"
-          id="exampleFormControlInput1"
+          onChange={(e)=> setDate(e.target.value)}
+          type="text"
+          class="form-control"          
           placeholder="Insert Date"
         />
       </div>
       <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">
+      <label for="Details" class="form-label">
           Details
         </label>
-        <textarea
-          class="form-control"
-          id="exampleFormControlTextarea1"
-          rows="3"
-        ></textarea>
+        <input
+          onChange={(e)=> setDetail(e.target.value)}
+          type="text"
+          class="form-control"          
+          placeholder="Insert Details"
+        />
       </div>
 
       <div>
         <label for="Transaction Type" class="form-label">
           Transaction Types
         </label>
-        <select class="form-select" aria-label="Default select example">
-          <option selected>--</option>
-          <option value="1">Income</option>
-          <option value="2">Expense</option>
-        </select>
+        <input
+          onChange={(e)=> setType(e.target.value)}
+          type="text"
+          class="form-control"          
+          placeholder="Income/Expense"
+        />
       </div>
 
       <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">
+        <label for="amount" class="form-label">
           Amounts
         </label>
         <input
+          onChange={(e)=> setAmount(e.target.value)}
           type="email"
           class="form-control"
-          id="exampleFormControlInput1"
+          id="amount"
           placeholder="Normal Number for income, add (-) infront of number for Expense"
         />
       </div>
 
       <div class="col-12">
-        <button class="btn btn-primary" type="submit">
+        <button onClick={()=>submitHandler()} class="btn btn-primary" type="submit">
           Submit
         </button>
       </div>
