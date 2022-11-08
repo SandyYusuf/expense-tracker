@@ -1,14 +1,15 @@
 Expense Tracker ato pelacak pengeluaran
 
-+Halaman Beranda
+Header
     -menampilkan total uang yang kita punya
-    -menampilkan pemasukan dan pengeluaran
-+Halaman Input
+    {-menampilkan pemasukan dan pengeluaran(gagal, logik lama nemu)}
+    
+form
     -create  = menginput detail pemasukan dan pengeluaran
     -read    =  menampilkan dan menyimpan riwayat pengeluaran dan pemasukan 
-                menampilkan jumlah masing" pengeluaran dan pemasukan
-+Halaman Riwayat
-    -update  = memperbaiki detail yang salah
+               
+Tabel Riwayat
+    
     -Delete  = menghapus inputan yang salah
 
 # server
