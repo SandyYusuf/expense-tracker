@@ -28,10 +28,7 @@ Tabel Riwayat
 2. npx sequelize-cli db:create
 3. Tables
    ```bash
-    npx sequelize-cli model:generate --name income --attributes date:string,information:string,moneyIn:integer
-    
-    npx sequelize-cli model:generate --name expense --attributes date:string,information:string,moneyOut:integer
-   
+    npx sequelize-cli model:generate --name transaction --attributes date:string,detail:string,categories:string,amount:integer
    ```
 4. npx sequelize-cli db:migrate
 5. cek dbeaver
