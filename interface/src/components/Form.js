@@ -35,7 +35,7 @@ const Form = () => {
   };
 
   return (
-    <div className="col-6 shadow p-3 mb-5 bg-body rounded">
+    <div className="col-4 shadow p-3 mb-5 bg-body rounded">
       <div className="col-md-6 mx-auto">
         <div>
           <div>

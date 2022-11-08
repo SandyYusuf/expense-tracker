@@ -14,10 +14,39 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   transaction.init({
-    date: DataTypes.STRING,
-    detail: DataTypes.STRING,
-    categories: DataTypes.STRING,
-    amount: DataTypes.INTEGER
+    date: {
+      type :DataTypes.STRING,
+      validate: {
+        notEmpty:{
+          message: "Date can not be empty."
+        }
+      }
+    },
+    detail: {
+      type :DataTypes.STRING,
+      validate: {
+        notEmpty:{
+          message: "Detail can not be empty."
+        }
+      }
+    },
+    categories: {
+      type :DataTypes.STRING,
+      validate: {
+        notEmpty:{
+          message: "Transaction type can not be empty."
+        }
+      }
+    },
+    amount: {
+      type :DataTypes.INTEGER,
+      validate: {
+        notEmpty:{
+          message: "Amounts can not be empty."
+        }
+      }
+    }
+    
   }, {
     sequelize,
     modelName: 'transaction',
