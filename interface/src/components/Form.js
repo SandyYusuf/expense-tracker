@@ -1,15 +1,37 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const Form = () => {
   const [date, setDate] = useState("");
   const [detail, setDetail] = useState("");
-  const [type, setType] = useState("");
+  const [categories, setCategories] = useState("");
   const [amount, setAmount] = useState("");
+
+  const addUser = (obj) => {
+    const { date, detail, categories, amount } = obj;
+    axios({
+      method: "post",
+      url: "http://localhost:3000/transactions/add",
+      data: {
+        date,
+        detail,
+        categories,
+        amount,
+      },
+    })
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const submitHandler = () => {
     console.log("submit");
-    const tempObj = { date, detail, type, amount };
-    console.log(tempObj);
+    const tempObj = { date, detail, categories, amount };
+    addUser(tempObj);
+    window.location.reload(false);
   };
 
   return (
@@ -48,7 +70,7 @@ const Form = () => {
                 Transaction Types
               </label>
               <input
-                onChange={(e) => setType(e.target.value)}
+                onChange={(e) => setCategories(e.target.value)}
                 type="text"
                 class="form-control"
                 placeholder="Income/Expense"
@@ -64,7 +86,7 @@ const Form = () => {
                 type="email"
                 class="form-control"
                 id="amount"
-                placeholder="Normal Number for income, add (-) infront of number for Expense"
+                placeholder="(+) for income, (-) for Expense"
               />
             </div>
           </form>

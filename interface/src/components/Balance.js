@@ -28,15 +28,15 @@ const Balance = () => {
         <table className="table table-bordered table-hover">
           <thead>
             <tr>
-              <th>
+              <th className="table-info">
                 <h2>Balance</h2>
               </th>
             </tr>
           </thead>
           <tbody>
-            <td>
+            <h2>
             Rp. {sums}
-            </td>
+            </h2>
           </tbody>
         </table>
       </div>
