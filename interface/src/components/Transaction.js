@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from "react";
-import axios from "axios"
-
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Loading from "./Loading";
 
 const Transaction = () => {
-  const [transactions, setTransactions] = useState([])
+  const [transactions, setTransactions] = useState([]);
 
   const getTransactions = async () => {
     try {
@@ -11,19 +11,18 @@ const Transaction = () => {
         method: "get",
         url: "http://localhost:3000/transactions",
       });
-   
+
       setTransactions(transactions.data);
     } catch (err) {
       console.log(err);
     }
   };
 
-
   useEffect(() => {
     getTransactions();
   }, []);
 
-    return (
+  return (
     <>
       <div className="col-6 shadow p-3 mb-5 bg-body rounded">
         <div className="col-md-12 mx-auto">
@@ -31,26 +30,47 @@ const Transaction = () => {
             <table className="table table-bordered table-hover">
               <thead>
                 <tr>
-                  
                   <th>Date</th>
                   <th>Details</th>
-                  <th>Categories</th>
-                  <th>Amounts</th> 
+                  <th>Amounts</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-              {transactions.map((transaction) => {
-            const { date, detail, categories, amount } = transaction;
-            return (
-              <tr>
-                
-                <td>{date}</td>
-                <td>{detail}</td>
-                <td>{categories}</td>
-                <td>Rp. {amount}</td>
-              </tr>
-            );
-          })}
+                {transactions.length !== 0 ? (
+                  transactions.map((transaction) => {
+                    const { date, detail, categories, amount } = transaction;
+                    return (
+                      <tr>
+                        <td>{date}</td>
+                        <td>
+                          <div className="align-items-center">
+                            <div className="">
+                              <h5>{detail}</h5>
+                              <small className="badge bg-success">
+                                {categories}
+                              </small>
+                            </div>
+                          </div>
+                        </td>
+                        <td>Rp. {amount}</td>
+                        <td>
+                          <button className="btn btn-sm btn-danger me-3">
+                            Delete
+                          </button>
+                        </td>
+                      </tr>
+                    );
+                  })
+                ) : (
+                  <tr>
+                    <td></td>
+                    <td>
+                      <Loading />
+                    </td>
+                    <td></td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>
