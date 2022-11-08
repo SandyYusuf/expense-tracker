@@ -38,7 +38,7 @@ const Transaction = () => {
 
   return (
     <>
-      <div className="col-8 shadow p-3 mb-5 bg-body rounded ">
+      <div className="col-6 shadow p-3 mb-5 bg-body rounded ">
         <div className="col-md-12 mx-auto ">
           <div>
             <table className="table table-bordered table-hover table-striped">

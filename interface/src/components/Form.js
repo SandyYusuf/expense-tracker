@@ -35,7 +35,7 @@ const Form = () => {
   };
 
   return (
-    <div className="col-4 shadow p-3 mb-5 bg-body rounded">
+    <div className="col-6 shadow p-3 mb-5 bg-body rounded">
       <div className="col-md-6 mx-auto">
         <div>
           <div>
@@ -86,8 +86,8 @@ const Form = () => {
                 type="email"
                 class="form-control"
                 id="amount"
-                placeholder="(+) for income, (-) for Expense"
-              />
+                placeholder="Amounts"
+              /><small>(negative - expense, positive - income)</small>
             </div>
           </form>
           <div class="col-12">
