@@ -15,7 +15,6 @@ const Transaction = () => {
       });
 
       setTransactions(transactions.data);
-      
     } catch (err) {
       console.log(err);
     }
@@ -27,7 +26,7 @@ const Transaction = () => {
 
   const loadData = () => {
     setLoad((prev) => prev + 3);
-  }
+  };
 
   const deleteTransaction = async (id) => {
     // console.log(id)
@@ -41,6 +40,10 @@ const Transaction = () => {
     } catch (err) {
       console.log(err);
     }
+  };
+
+  const showLess = () => {
+    window.location.reload(false);
   };
 
   return (
@@ -59,7 +62,7 @@ const Transaction = () => {
               </thead>
               <tbody>
                 {transactions.length !== 0 ? (
-                  transactions.slice(0,load).map((transaction) => {
+                  transactions.slice(0, load).map((transaction) => {
                     const { id, date, detail, categories, amount } =
                       transaction;
                     return (
@@ -97,15 +100,31 @@ const Transaction = () => {
                   </tr>
                 )}
 
-                {
-               load < 100 && <button onClick={loadData} class="btn btn-info"
-               type="LoadMore">load more</button>
-             }
                 {/* <button className="btn" onClick={() => setReadMore(!readMore)}>
                   {readMore ? "show less" : "  read more"}
                 </button> */}
               </tbody>
             </table>
+            <div className="container">
+                  <div className="row">
+                    <button
+                      onClick={() => showLess()}
+                      className="btn btn-sm btn-danger col-md-4 mx-auto"
+                    >
+                      Show Less
+                    </button>
+
+                    {load < 100 && (
+                      <button
+                        onClick={loadData}
+                        class="btn btn-success col-md-4 mx-auto"
+                        type="LoadMore"
+                      >
+                        show more
+                      </button>
+                    )}
+                  </div>
+                </div>
           </div>
         </div>
       </div>
