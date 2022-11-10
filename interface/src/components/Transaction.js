@@ -4,6 +4,8 @@ import Loading from "./Loading";
 
 const Transaction = () => {
   const [transactions, setTransactions] = useState([]);
+  const [load, setLoad] = useState(3);
+  // const [readMore, setReadMore] = useState(false);
 
   const getTransactions = async () => {
     try {
@@ -13,6 +15,7 @@ const Transaction = () => {
       });
 
       setTransactions(transactions.data);
+      
     } catch (err) {
       console.log(err);
     }
@@ -22,23 +25,27 @@ const Transaction = () => {
     getTransactions();
   }, []);
 
-  const deleteTransaction = async (id)=>{
-    // console.log(id)
-    try{
-      const transactions = await axios ({
-        method: "delete",
-        url: `http://localhost:3000/transactions/remove/${id}`
-      })
-      setTransactions(transactions.data)
-      window.location.reload(false)
-    }catch(err){
-      console.log(err)
-    }
+  const loadData = () => {
+    setLoad((prev) => prev + 3);
   }
+
+  const deleteTransaction = async (id) => {
+    // console.log(id)
+    try {
+      const transactions = await axios({
+        method: "delete",
+        url: `http://localhost:3000/transactions/remove/${id}`,
+      });
+      setTransactions(transactions.data);
+      window.location.reload(false);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <>
-      <div className="col-6 shadow p-3 mb-5 bg-body rounded ">
+      <div id="main" className="col-6 shadow p-3 mb-5 bg-body rounded ">
         <div className="col-md-12 mx-auto ">
           <div>
             <table className="table table-bordered table-hover table-striped">
@@ -52,8 +59,9 @@ const Transaction = () => {
               </thead>
               <tbody>
                 {transactions.length !== 0 ? (
-                  transactions.map((transaction) => {
-                    const { id, date, detail, categories, amount } = transaction;
+                  transactions.slice(0,load).map((transaction) => {
+                    const { id, date, detail, categories, amount } =
+                      transaction;
                     return (
                       <tr>
                         <td>{date}</td>
@@ -69,9 +77,10 @@ const Transaction = () => {
                         </td>
                         <td>Rp. {amount}</td>
                         <td>
-                          <button 
-                          onClick={()=>deleteTransaction(id)}
-                          className="btn btn-sm btn-danger me-3">
+                          <button
+                            onClick={() => deleteTransaction(id)}
+                            className="btn btn-sm btn-danger me-3"
+                          >
                             Delete
                           </button>
                         </td>
@@ -87,6 +96,14 @@ const Transaction = () => {
                     <td></td>
                   </tr>
                 )}
+
+                {
+               load < 100 && <button onClick={loadData} class="btn btn-info"
+               type="LoadMore">load more</button>
+             }
+                {/* <button className="btn" onClick={() => setReadMore(!readMore)}>
+                  {readMore ? "show less" : "  read more"}
+                </button> */}
               </tbody>
             </table>
           </div>
