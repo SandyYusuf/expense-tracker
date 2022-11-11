@@ -48,10 +48,10 @@ const Transaction = () => {
 
   return (
     <>
-      <div id="main" className="col-6 shadow p-3 mb-5 bg-body rounded ">
+      <div id="main" className=" shadow p-3 mb-5 bg-body rounded  ">
         <div className="col-md-12 mx-auto ">
           <div>
-            <table className="table table-bordered table-hover table-striped">
+            <table className="table table-dark table-bordered table-hover table-striped">
               <thead>
                 <tr className="table-info">
                   <th>Date</th>

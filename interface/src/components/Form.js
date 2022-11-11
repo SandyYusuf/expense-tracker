@@ -35,13 +35,13 @@ const Form = () => {
   };
 
   return (
-    <div className="col-6 shadow p-3 mb-5 bg-body rounded">
-      <div className="col-md-6 mx-auto">
+    <div className="shadow p-3 mb-5 bg-body rounded">
+      <div className="col-md-10 mx-auto">
         <div>
           <div>
             <h3> Add Transaction</h3>
           </div>
-          <form className="needs-validation">
+          <form>
             <div class="mb-3">
               <label for="Date" class="form-label ">
                 Date

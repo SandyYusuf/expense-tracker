@@ -29,14 +29,14 @@ const Balance = () => {
           <thead>
             <tr>
               <th className="table-info">
-                <h2>Balance</h2>
+                <h3>Balance</h3>
               </th>
             </tr>
           </thead>
           <tbody>
-            <h2>
+            <h3>
             Rp. {sums}
-            </h2>
+            </h3>
           </tbody>
         </table>
       </div>
