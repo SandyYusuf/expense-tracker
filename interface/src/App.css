@@ -3,6 +3,7 @@
 body {
   font-family: "Merriweather", sans-serif;
   background-color: black;
+  overflow: auto;
 }
 
 
@@ -21,6 +22,17 @@ body {
   color: gold;
 }
 
+.body{
+  overflow: auto;
+}
+
+/* #main{
+  overflow: scroll;
+}
+
+#form{
+  overflow: auto;
+} */
 
 
 

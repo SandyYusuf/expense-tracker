@@ -35,8 +35,8 @@ const Form = () => {
   };
 
   return (
-    <div className="shadow p-3 mb-5 bg-body rounded">
-      <div className="col-md-10 mx-auto">
+    <div id="form" className="shadow p-3 mb-5 bg-body rounded">
+      <div className="col-md-12 mx-auto">
         <div>
           <div>
             <h3> Add Transaction</h3>

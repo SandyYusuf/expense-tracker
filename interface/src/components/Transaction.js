@@ -4,7 +4,7 @@ import Loading from "./Loading";
 
 const Transaction = () => {
   const [transactions, setTransactions] = useState([]);
-  const [load, setLoad] = useState(3);
+  const [load, setLoad] = useState(2);
   // const [readMore, setReadMore] = useState(false);
 
   const getTransactions = async () => {
@@ -25,7 +25,7 @@ const Transaction = () => {
   }, []);
 
   const loadData = () => {
-    setLoad((prev) => prev + 3);
+    setLoad((prev) => prev + 2);
   };
 
   const deleteTransaction = async (id) => {
@@ -57,7 +57,7 @@ const Transaction = () => {
                   <th>Date</th>
                   <th>Details</th>
                   <th>Amounts</th>
-                  <th>Action</th>
+                  {/* <th>Action</th> */}
                 </tr>
               </thead>
               <tbody>
@@ -72,21 +72,26 @@ const Transaction = () => {
                           <div className="align-items-center">
                             <div className="">
                               <h5>{detail}</h5>
-                              <small className="badge bg-success">
+                              <small className="badge bg-info">
                                 {categories}
                               </small>
                             </div>
                           </div>
                         </td>
-                        <td>Rp. {amount}</td>
                         <td>
-                          <button
-                            onClick={() => deleteTransaction(id)}
-                            className="btn btn-sm btn-danger me-3"
-                          >
-                            Delete
-                          </button>
+                          <div className="align-items-center">
+                            <div className="">
+                              <h5>Rp. {amount}</h5>
+                              <button
+                                onClick={() => deleteTransaction(id)}
+                                className="btn btn-sm btn-danger"
+                              >
+                                Delete
+                              </button>
+                            </div>
+                          </div>
                         </td>
+                        {/* <td></td> */}
                       </tr>
                     );
                   })
@@ -97,7 +102,7 @@ const Transaction = () => {
                       <Loading />
                     </td>
                     <td></td>
-                    <td></td>
+                    {/* <td></td> */}
                   </tr>
                 )}
 
@@ -107,25 +112,25 @@ const Transaction = () => {
               </tbody>
             </table>
             <div className="container">
-                  <div className="row">
-                    <button
-                      onClick={() => showLess()}
-                      className="btn btn-sm btn-danger col-md-4 mx-auto"
-                    >
-                      Show Less
-                    </button>
+              <div className="row">
+                <button
+                  onClick={() => showLess()}
+                  className="btn btn-sm btn-secondary col-md-4 mx-auto"
+                >
+                  Show Less
+                </button>
 
-                    {load < 100 && (
-                      <button
-                        onClick={loadData}
-                        class="btn btn-success col-md-4 mx-auto"
-                        type="LoadMore"
-                      >
-                        show more
-                      </button>
-                    )}
-                  </div>
-                </div>
+                {load < 100 && (
+                  <button
+                    onClick={loadData}
+                    class="btn btn-secondary col-md-4 mx-auto"
+                    type="LoadMore"
+                  >
+                    show more
+                  </button>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </div>

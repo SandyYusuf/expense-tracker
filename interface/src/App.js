@@ -26,7 +26,7 @@ function App() {
               <Balance />
               <Transaction />
             </div>
-            <div className="col-4">
+            <div className="col">
               <Form />
             </div>
           </div>
