@@ -97,6 +97,7 @@ const Transaction = () => {
                       <Loading />
                     </td>
                     <td></td>
+                    <td></td>
                   </tr>
                 )}
 
